@@ -30,10 +30,36 @@
     <link rel="stylesheet" href="/<?php echo STATIC_URL; ?>/view/assets/css/plugins/magnigy-popup.min.css">
     <link rel="stylesheet" href="/<?php echo STATIC_URL; ?>/view/assets/css/plugins/plyr.css">
     <link rel="stylesheet" href="/<?php echo STATIC_URL; ?>/view/assets/css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+
+    <script src="/<?php echo STATIC_URL; ?>/view/js/jq.3.5.js"></script>
+    <script src="/<?php echo STATIC_URL; ?>/view/js/main.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script> -->
+    <script>
+        function swalert(obj) {
+            Swal.fire(
+                obj.title,
+                obj.msg,
+                obj.icon
+            ).then(() => {
+                if (obj.gotoLink) {
+                    window.location.href = obj.gotoLink;
+                }
+            })
+        }
+    </script>
 </head>
 
 <body class="rbt-header-sticky">
-
+    <div id="global-progress-bar" style="height: 5px;" class="progress bg-primary fixed-top">
+        <div class="progress-bar"></div>
+    </div>
     <!-- Start Header Area -->
     <header class="rbt-header rbt-header-9">
         <div class="rbt-sticky-placeholder"></div>
@@ -587,6 +613,21 @@
     <script src="/<?php echo STATIC_URL; ?>/view/assets/js/vendor/plyr.js"></script>
     <!-- Main JS -->
     <script src="/<?php echo STATIC_URL; ?>/view/assets/js/main.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/<?php echo STATIC_URL; ?>/view/assets/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $(".custom-number-input").on("input", function() {
+                this.value = this.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+            });
+        });
+    </script>
+    <?php
+    ajaxActive("#global-progress-bar");
+    ?>
 </body>
 
 </html>
